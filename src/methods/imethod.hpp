@@ -1,7 +1,7 @@
 #pragma once
 
 
-class IMosueMethod{
+class IMosueMethod{ // I realise this was wrong spelling, but I will keep it I kinda like that lol
     public:
     virtual ~IMosueMethod() = default;
 
