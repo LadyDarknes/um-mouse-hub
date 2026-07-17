@@ -4,6 +4,7 @@
 
 extern IMosueMethod* g_setcursorpos;
 extern IMosueMethod* g_mouseevent;
+extern IMosueMethod* g_sendinput;
 
 static void test(IMosueMethod* m, const char* name) {
     printf("--- %s ---\n", name);
@@ -15,5 +16,7 @@ int main() {
     test(g_setcursorpos, "SetCursorPos");
     Sleep(5000);
     test(g_mouseevent,    "mouse_event");
+    Sleep(5000);
+    test(g_sendinput,     "SendInput");
     return 0;
 }
