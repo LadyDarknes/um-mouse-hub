@@ -1,9 +1,19 @@
-#include <iostream>
+#include <cstdio>
 #include <windows.h>
+#include "methods/imethod.hpp"
 
+extern IMosueMethod* g_setcursorpos;
+extern IMosueMethod* g_mouseevent;
 
-int main()
-{
-    std::cout << "Hello, World!" << std::endl;
+static void test(IMosueMethod* m, const char* name) {
+    printf("--- %s ---\n", name);
+    printf("  move_to(100,100): %s\n", m->move_to(100, 100) ? "ok" : "fail");
+    printf("  move_relative(50,0): %s\n", m->move_relative(50, 0) ? "ok" : "fail");
+}
+
+int main() {
+    test(g_setcursorpos, "SetCursorPos");
+    Sleep(5000);
+    test(g_mouseevent,    "mouse_event");
     return 0;
 }
