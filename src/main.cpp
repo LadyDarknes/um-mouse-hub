@@ -6,6 +6,7 @@ extern IMosueMethod* g_postmessage;
 extern IMosueMethod* g_setcursorpos;
 extern IMosueMethod* g_mouseevent;
 extern IMosueMethod* g_sendinput;
+extern IMosueMethod* g_setcursorpos;
 
 static void test(IMosueMethod* m, const char* name) {
     printf("--- %s ---\n", name);
@@ -22,5 +23,6 @@ int main() {
     Sleep(1000);
     test(g_postmessage,   "PostMessage");
     Sleep(1000);
+    test(g_setcursorpos, "SetPhysicalCursorPos");
     return 0;
 }

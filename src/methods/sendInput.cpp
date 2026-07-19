@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <cstdio>
 #include "imethod.hpp"
 
 class SendInputMethod : public IMosueMethod {
@@ -8,6 +9,10 @@ class SendInputMethod : public IMosueMethod {
         input[0].mi.dx = x * 65535 / GetSystemMetrics(SM_CXSCREEN);
         input[0].mi.dy = y * 65535 / GetSystemMetrics(SM_CYSCREEN);
         input[0].mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE; // I didnt realise until I check, this mf is mouse event xd
+        SendInput(1, input, sizeof(INPUT));
+        printf("Testing MOUSEEVENTF_ABSOLUTE flag:\n");
+        input[0].mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_MOVE_NOCOALESCE;
+        printf("Testing MOUSEEVENTF_MOVE_NOCOALESCE flag:\n");
         SendInput(1, input, sizeof(INPUT));
         return true;
     }
