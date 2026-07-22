@@ -21,7 +21,7 @@ public:
 
     bool move_to(int x, int y) override {
         if (fnSetCursorPos) {
-            return fnSetCursorPos(x, y) == 0; // NTSTATUS success is 0
+            return fnSetCursorPos(x, y) != 0;
         }
         return false;
     }
@@ -33,8 +33,8 @@ public:
             input.mi.dx = dx;
             input.mi.dy = dy;
             input.mi.dwFlags = MOUSEEVENTF_MOVE;
-            NTSTATUS status = fnSendInput(1, &input, sizeof(INPUT)) == 0;
-            return status == 1;
+            UINT count = fnSendInput(1, &input, sizeof(INPUT));
+            return count == 1;
         }
         return false;
     }
