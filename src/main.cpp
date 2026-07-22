@@ -15,6 +15,7 @@ extern IMosueMethod* g_physicalcursorpos;
 extern IMosueMethod* g_inputinjector;
 extern IMosueMethod* g_hidrawwrite;
 extern IMosueMethod* g_win32u_syscall;
+extern IMosueMethod* g_directinput;
 
 
 static void test(IMosueMethod* m, const char* name) {
@@ -53,6 +54,8 @@ int main() {
     test(g_sendMessage,         "SendMessage");
     Sleep(1000);
     test(g_win32u_syscall,      "Win32uSyscall");
+    Sleep(1000);
+    test(g_directinput,         "DirectInput");
     
     return 0;
 }
