@@ -16,6 +16,7 @@ extern IMosueMethod* g_inputinjector;
 extern IMosueMethod* g_hidrawwrite;
 extern IMosueMethod* g_win32u_syscall;
 extern IMosueMethod* g_directinput;
+extern IMosueMethod* g_ntuserinject;
 
 
 static void test(IMosueMethod* m, const char* name) {
@@ -47,15 +48,18 @@ int main() {
     Sleep(1000);
     test(g_physicalcursorpos,  "SetPhysicalCursorPos");
     Sleep(1000);
-    // test(g_inputinjector,      "InputInjector");
-    // Sleep(1000);
-    // test(g_hidrawwrite,        "HIDRawWrite");
-    // Sleep(1000);
     test(g_sendMessage,         "SendMessage");
     Sleep(1000);
     test(g_win32u_syscall,      "Win32uSyscall");
     Sleep(1000);
+    // test(g_inputinjector,      "InputInjector");
+    // Sleep(1000);
+    // test(g_hidrawwrite,        "HIDRawWrite");
+    // Sleep(1000);
     test(g_directinput,         "DirectInput");
+    Sleep(1000);
+    test(g_ntuserinject,        "NtUserInjectMouseInput"); 
+    Sleep(1000);
     
     return 0;
 }
