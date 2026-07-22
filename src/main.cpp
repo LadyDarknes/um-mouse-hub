@@ -7,12 +7,15 @@
 #include "methods/imethod.hpp"
 
 extern IMosueMethod* g_postmessage;
+extern IMosueMethod* g_sendMessage;
 extern IMosueMethod* g_setcursorpos;
 extern IMosueMethod* g_mouseevent;
 extern IMosueMethod* g_sendinput;
 extern IMosueMethod* g_physicalcursorpos;
 extern IMosueMethod* g_inputinjector;
 extern IMosueMethod* g_hidrawwrite;
+
+
 
 static void test(IMosueMethod* m, const char* name) {
     printf("--- %s ---\n", name);
@@ -46,6 +49,8 @@ int main() {
     test(g_inputinjector,      "InputInjector");
     Sleep(1000);
     test(g_hidrawwrite,        "HIDRawWrite");
+    Sleep(1000);
+    test(g_sendMessage,         "SendMessage");
     
     return 0;
 }
