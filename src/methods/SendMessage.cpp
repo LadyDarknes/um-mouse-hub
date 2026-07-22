@@ -8,10 +8,14 @@ class SendMessageMethod : public IMosueMethod {
         return true;
     }
     bool move_relative(int dx, int dy) override {
-        LPARAM lParam = MAKELPARAM(dx, dy);
+        POINT p;
+        GetCursorPos(&p);
+        LPARAM lParam = MAKELPARAM(p.x + dx, p.y + dy);
         SendMessage(HWND_BROADCAST, WM_MOUSEMOVE, 0, lParam);
         return true;
     }
 };
 
+static SendMessageMethod reg;
+IMosueMethod* g_sendMessage = &reg;
 
